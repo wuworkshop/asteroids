@@ -6,6 +6,9 @@ def main():
     pygame.init()
     # Initialize a new GUI window or screen for display
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+    clock = pygame.time.Clock()
+    # dt = "delta time"
+    dt = 0
     # Infinite while loop for the game loop
     while True:
         for event in pygame.event.get():
@@ -14,6 +17,10 @@ def main():
             pygame.Surface.fill(screen,"black")
             # Refresh the screen
             pygame.display.flip()
+            # Set FPS (frames per second) to a maximum of 60 times per second.
+            # .tick() method also returns the amount of time that has
+            # passed since the last time it was called in milliseconds.
+            dt = clock.tick(60) / 1000
 
 
 if __name__ == "__main__":
