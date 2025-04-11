@@ -1,12 +1,16 @@
 import pygame
 
 from constants import *
+from player import *
 
 def main():
     pygame.init()
     # Initialize a new GUI window or screen for display
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     clock = pygame.time.Clock()
+    x = SCREEN_WIDTH / 2
+    y = SCREEN_HEIGHT / 2
+    player = Player(x, y)
     # dt = "delta time"
     dt = 0
     # Infinite while loop for the game loop
@@ -15,6 +19,7 @@ def main():
             if event.type == pygame.QUIT:
                 return
             pygame.Surface.fill(screen,"black")
+            player.draw(screen)
             # Refresh the screen
             pygame.display.flip()
             # Set FPS (frames per second) to a maximum of 60 times per second.
