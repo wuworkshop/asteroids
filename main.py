@@ -10,17 +10,24 @@ def main():
     clock = pygame.time.Clock()
     x = SCREEN_WIDTH / 2
     y = SCREEN_HEIGHT / 2
+    # group for all objects that can be updated
+    updatable = pygame.sprite.Group()
+    # group for all the objects that can be drawn
+    drawable = pygame.sprite.Group()
+    Player.containers = (updatable, drawable)
     player = Player(x, y)
     # dt = "delta time"
     dt = 0
+
     # Infinite while loop for the game loop
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
             pygame.Surface.fill(screen,"black")
-            player.update(dt)
-            player.draw(screen)
+            updatable.update(dt)
+            for obj in drawable:
+                obj.draw(screen)
             # Refresh the screen
             pygame.display.flip()
             # Set FPS (frames per second) to a maximum of 60 times per second.
