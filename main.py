@@ -34,6 +34,12 @@ def main():
             updatable.update(dt)
             for obj in drawable:
                 obj.draw(screen)
+
+            for obj in asteroids:
+                # Check if an asteroid has collided with the player
+                if obj.collide(player):
+                    print("Game over!")
+                    exit()
             # Refresh the screen
             pygame.display.flip()
             # Set FPS (frames per second) to a maximum of 60 times per second.
